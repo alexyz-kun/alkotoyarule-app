@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://tt007b5v0xui"]
 
+[ext_resource type="Script" uid="uid://bdcghge0dup7l" path="res://scripts/scr_scene_main.gd" id="1_1o4gp"]
 [ext_resource type="PackedScene" uid="uid://dlhrvliypy50j" path="res://scenes/scene_monetary.tscn" id="1_ifhj8"]
 
-[node name="SceneMain" type="Node" unique_id=863739307]
+[node name="SceneMain" type="Node3D" unique_id=1419374823]
+script = ExtResource("1_1o4gp")
+
+[node name="AudioManager" type="Node" parent="." unique_id=2027923669]
+
+[node name="MusicPlayerParent" type="Node" parent="AudioManager" unique_id=395489249]
+
+[node name="SoundPlayerParent" type="Node" parent="AudioManager" unique_id=2084197375]
 
 [node name="ActiveSceneParent" type="Node" parent="." unique_id=872282860]
 

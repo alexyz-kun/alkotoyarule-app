@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dkxwx0flc16jw"]
+
+[ext_resource type="Script" uid="uid://dntih6fq2oqah" path="res://scripts/scr_user_selection_modal.gd" id="1_rx3f3"]
+[ext_resource type="FontFile" uid="uid://cewyoqun8rbwt" path="res://fonts/font_renogare_regular.otf" id="2_qchdy"]
+[ext_resource type="PackedScene" uid="uid://dij23ui7tlrpw" path="res://prefabs/prefab_user_selection_item.tscn" id="3_dbjv5"]
+[ext_resource type="FontFile" uid="uid://r6nqdu8lrryk" path="res://fonts/font_ubuntu_mono_bold.ttf" id="4_qchdy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfqeo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.98, 0.98, 0.98, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
+[node name="UserSelectionModal" type="Control" unique_id=1777806998]
+custom_minimum_size = Vector2(200, 343)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 343.0
+script = ExtResource("1_rx3f3")
+
+[node name="Panel" type="Panel" parent="." unique_id=906056368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfqeo")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=347677947]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UserListAndHeader" type="VBoxContainer" parent="MarginContainer" unique_id=1033633454]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Header" type="Label" parent="MarginContainer/UserListAndHeader" unique_id=35999053]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qchdy")
+theme_override_font_sizes/font_size = 32
+text = "Select"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UserListAndHeader" unique_id=1693171044]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/UserListAndHeader/MarginContainer" unique_id=1347013057]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="UserSelectionList" type="VBoxContainer" parent="MarginContainer/UserListAndHeader/MarginContainer/ScrollContainer" unique_id=2066444042]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UserSelectionItem" parent="MarginContainer/UserListAndHeader/MarginContainer/ScrollContainer/UserSelectionList" unique_id=1353113389 instance=ExtResource("3_dbjv5")]
+visible = false
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/UserListAndHeader" unique_id=1250474245]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qchdy")
+theme_override_font_sizes/font_size = 32
+text = "OK"

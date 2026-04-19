@@ -1,10 +1,50 @@
 [gd_scene format=3 uid="uid://dlhrvliypy50j"]
 
-[ext_resource type="LabelSettings" uid="uid://b6yonrp04aisp" path="res://label_settings/labelsetting_expenditure_common.tres" id="2_1el1g"]
-[ext_resource type="LabelSettings" uid="uid://bbp1ij2t22m0o" path="res://label_settings/labelsetting_expenditure_subitem_header.tres" id="2_7e783"]
-[ext_resource type="PackedScene" uid="uid://b42yb4i7iaiy" path="res://prefabs/prefab_outing_activity_expense_item_row.tscn" id="3_1el1g"]
+[ext_resource type="FontFile" uid="uid://cewyoqun8rbwt" path="res://fonts/font_renogare_regular.otf" id="1_phsap"]
+[ext_resource type="Script" uid="uid://d3i87lwpp53w7" path="res://scripts/scr_scene_monetary.gd" id="1_x3db0"]
+[ext_resource type="PackedScene" uid="uid://detexq714mgk5" path="res://prefabs/prefab_outing.tscn" id="2_1el1g"]
+[ext_resource type="FontFile" uid="uid://csuru78dsjuqu" path="res://fonts/font_inter_18pt_regular.ttf" id="3_hfqeo"]
+[ext_resource type="PackedScene" uid="uid://dkxwx0flc16jw" path="res://prefabs/prefab_user_selection_modal.tscn" id="6_fk1yi"]
+[ext_resource type="FontFile" uid="uid://r6nqdu8lrryk" path="res://fonts/font_ubuntu_mono_bold.ttf" id="7_30f8c"]
 
-[node name="SceneMonetary" type="Node" unique_id=1877647412]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5a07"]
+content_margin_left = 4.0
+content_margin_top = 8.0
+content_margin_right = 4.0
+content_margin_bottom = 8.0
+bg_color = Color(0.49747366, 0.49747366, 0.49747366, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phsap"]
+content_margin_left = 4.0
+content_margin_top = 8.0
+content_margin_right = 4.0
+content_margin_bottom = 8.0
+bg_color = Color(0.24840015, 0.24840018, 0.24840012, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouxmh"]
+content_margin_left = 4.0
+content_margin_top = 8.0
+content_margin_right = 4.0
+content_margin_bottom = 8.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="SceneMonetary" type="Node3D" unique_id=136295825]
+script = ExtResource("1_x3db0")
 
 [node name="Control" type="Control" parent="." unique_id=1209568979]
 layout_mode = 3
@@ -24,94 +64,62 @@ grow_vertical = 2
 color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="ScreenPadding" type="MarginContainer" parent="Control" unique_id=1785090260]
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 216.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding" unique_id=1764502694]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding" unique_id=1441532650]
 layout_mode = 2
 
 [node name="ScreenHeaderLabel" type="Label" parent="Control/ScreenPadding/VBoxContainer" unique_id=240378513]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_phsap")
+theme_override_font_sizes/font_size = 32
 text = "OUTINGS"
-label_settings = ExtResource("2_7e783")
 vertical_alignment = 1
 
-[node name="OutingItem" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer" unique_id=1575875646]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/ScreenPadding/VBoxContainer" unique_id=247263065]
 layout_mode = 2
-theme_override_constants/separation = 20
+size_flags_vertical = 3
+theme_override_constants/scrollbar_h_separation = 8
 
-[node name="PrimaryDetail" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem" unique_id=213911281]
+[node name="OutingListAndFooter" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/ScrollContainer" unique_id=1764502694]
 layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="OutingName" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/PrimaryDetail" unique_id=1645576983]
-layout_mode = 2
-text = "US PIZZA hangout"
-label_settings = ExtResource("2_7e783")
-
-[node name="DateTime" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/PrimaryDetail" unique_id=141438455]
-layout_mode = 2
-text = "1 April 2026"
-label_settings = ExtResource("2_1el1g")
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem" unique_id=1663495527]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_right = 24
-
-[node name="ActivitiesAndTransfers" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer" unique_id=1680560665]
-layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 24
 
-[node name="Activities" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers" unique_id=2082494096]
+[node name="OutingList" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter" unique_id=511965949]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="EmptyPlaceholder" type="Label" parent="Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter/OutingList" unique_id=1826828349]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+theme_override_fonts/font = ExtResource("3_hfqeo")
+theme_override_font_sizes/font_size = 32
+text = "Nothing here yet. Start adding in logs."
+
+[node name="OutingItem" parent="Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter/OutingList" unique_id=432378600 instance=ExtResource("2_1el1g")]
+visible = false
 layout_mode = 2
 
-[node name="HeaderLabel" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities" unique_id=2017809958]
+[node name="NewOutingButton" type="Button" parent="Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter" unique_id=335103668]
 layout_mode = 2
-text = "ACTIVITIES"
-label_settings = ExtResource("2_7e783")
+theme_override_fonts/font = ExtResource("7_30f8c")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p5a07")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_phsap")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ouxmh")
+text = "+outing"
 
-[node name="ActivityList" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities" unique_id=345992729]
-layout_mode = 2
-
-[node name="ActivityItem" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList" unique_id=403313622]
-layout_mode = 2
-
-[node name="HeaderLabel" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem" unique_id=1084451302]
-layout_mode = 2
-text = "#1 - HOMEBASE"
-label_settings = ExtResource("2_1el1g")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem" unique_id=621891198]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem/VBoxContainer" unique_id=1714625538]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-
-[node name="Item" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem/VBoxContainer/MarginContainer" unique_id=347656769]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="RecipientLabel" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem/VBoxContainer/MarginContainer/Item" unique_id=1390761321]
-layout_mode = 2
-text = "Shared (all) (alex, kopi, toby, yaki)"
-label_settings = ExtResource("2_1el1g")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem/VBoxContainer/MarginContainer/Item" unique_id=1186622985]
-layout_mode = 2
-theme_override_constants/separation = -8
-
-[node name="ItemRow" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Activities/ActivityList/ActivityItem/VBoxContainer/MarginContainer/Item/VBoxContainer" unique_id=797361467 instance=ExtResource("3_1el1g")]
-layout_mode = 2
-
-[node name="Tranfers" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers" unique_id=1442810461]
-layout_mode = 2
-
-[node name="HeaderLabel" type="Label" parent="Control/ScreenPadding/VBoxContainer/OutingItem/MarginContainer/ActivitiesAndTransfers/Tranfers" unique_id=2079793342]
-layout_mode = 2
-text = "TRANSFERS"
-label_settings = ExtResource("2_7e783")
+[node name="UserSelectionModal" parent="Control" unique_id=1777806998 instance=ExtResource("6_fk1yi")]
+visible = false
+layout_mode = 0
