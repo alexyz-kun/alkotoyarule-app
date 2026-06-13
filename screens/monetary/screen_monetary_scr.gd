@@ -1,4 +1,4 @@
-class_name SceneMonetary
+class_name ScreenMonetary
 extends Node3D
 
 # Internal nodes
@@ -11,7 +11,7 @@ var prefab_outing_item: PackedScene
 
 # Base methods
 
-func on_scene_active():
+func on_screen_loaded():
 	root_control = $Control
 	outing_list = $Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter/OutingList
 	new_outing_item_button = $Control/ScreenPadding/VBoxContainer/ScrollContainer/OutingListAndFooter/NewOutingButton

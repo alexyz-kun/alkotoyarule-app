@@ -26,7 +26,7 @@ func set_up(p_index: int, p_name: String, p_is_selected: bool, p_parent_modal: U
 	parent_modal = p_parent_modal
 	
 	# Signals
-	SceneMain.instance.manager.input.lmb_released.connect(_on_lmb_released)
+	ScreenMain.instance.manager.input.lmb_released.connect(_on_lmb_released)
 	mouse_entered.connect(_on_cursor_entered)
 	mouse_exited.connect(_on_cursor_exited)
 	

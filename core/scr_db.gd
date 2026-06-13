@@ -12,7 +12,7 @@ enum Platform {
 	TWITTER,
 }
 
-static var user_list: Array[User]
+static var user_list: Array[AlkotoUser]
 static var client_list: Array[Client]
 static var outing_list: Array[Outing]
 
@@ -20,12 +20,12 @@ static var outing_list: Array[Outing]
 
 func _init():
 	user_list = [
-		User.new("Alex", "5271 6252 95",	"BCA"),
-		User.new("Dale", "", "BCA"),
-		User.new("Kopi", "9016 0052 443",	"Jenius / BTPN / SMBC"),
-		User.new("Toby", "7645 0177 90", 	"BCA"),
-		User.new("Toru", "6043 3466 23", 	"BCA"),
-		User.new("Yaki", "7965 3058 82", 	"BCA")
+		AlkotoUser.new("Alex", "5271 6252 95",	"BCA"),
+		AlkotoUser.new("Dale", "", "BCA"),
+		AlkotoUser.new("Kopi", "9016 0052 443",	"Jenius / BTPN / SMBC"),
+		AlkotoUser.new("Toby", "7645 0177 90", 	"BCA"),
+		AlkotoUser.new("Toru", "6043 3466 23", 	"BCA"),
+		AlkotoUser.new("Yaki", "7965 3058 82", 	"BCA")
 	]
 
 
@@ -35,7 +35,7 @@ class Tag:
 	var title: String
 
 
-class User:
+class AlkotoUser:
 	var user_name: String
 	var pronoun_list: Array[Pronoun]
 	var bank_account: String

@@ -32,8 +32,13 @@ class CommonResourcePath:
 
 class ScreenResourcePath:
 	var main
+	var sandbox := SandboxScreenResourcePath.new()
 	var monetary := MonetaryScreenResourcePath.new()
 	var work_manager
+
+
+class SandboxScreenResourcePath:
+	var scene: String = "res://screens/sandbox/screen_sandbox.tscn"
 
 
 class MonetaryScreenResourcePath:

@@ -1,7 +1,7 @@
-class_name SceneMain
+class_name ScreenMain
 extends Node3D
 
-static var instance: SceneMain
+static var instance: ScreenMain
 
 var db: DB
 var manager: Manager
@@ -26,8 +26,8 @@ func _ready() -> void:
 	active_scene_parent.add_child(new_scene)
 	active_scene = new_scene
 	
-	var scene_example: SceneMonetary = new_scene
-	scene_example.on_scene_active()
+	var scene_example = new_scene
+	scene_example.on_screen_loaded()
 
 
 func _input(event: InputEvent) -> void:
@@ -81,8 +81,8 @@ class AudioManager:
 	# Base methods
 	
 	func _init():
-		music_player_parent = SceneMain.instance.get_node("AudioManager/MusicPlayerParent")
-		sound_player_parent = SceneMain.instance.get_node("AudioManager/SoundPlayerParent")
+		music_player_parent = ScreenMain.instance.get_node("AudioManager/MusicPlayerParent")
+		sound_player_parent = ScreenMain.instance.get_node("AudioManager/SoundPlayerParent")
 		
 		for i in MAX_MUSIC_PLAYER_COUNT:
 			var new_player := AudioStreamPlayer.new()

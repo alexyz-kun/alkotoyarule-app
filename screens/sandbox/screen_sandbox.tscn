@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bmg6t7e2xo4i1"]
+
+[ext_resource type="Script" uid="uid://fl6ss078ay4o" path="res://screens/sandbox/screen_sandbox_scr.gd" id="1_rmq3t"]
+[ext_resource type="Script" uid="uid://dqss6smw7w8nh" path="res://addons/discord_gd/discord.gd" id="2_h0rcq"]
+
+[node name="ScreenSandbox" type="Node3D" unique_id=894556476]
+script = ExtResource("1_rmq3t")
+
+[node name="DiscordBot" type="Node" parent="." unique_id=74354422]
+script = ExtResource("2_h0rcq")
+metadata/_custom_type_script = "uid://dqss6smw7w8nh"
+
+[node name="Control" type="Control" parent="." unique_id=1059530599]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
