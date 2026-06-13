@@ -10,8 +10,19 @@ func on_screen_loaded():
 	
 	bot.bot_ready.connect(_on_bot_ready)
 	bot.message_create.connect(_on_message_create)
-	bot.TOKEN = ""
+	bot.TOKEN = _fetch_token()
 	bot.login()
+
+
+# Private methods
+
+func _fetch_token() -> String:
+	var fa := FileAccess.open("res://secrets/bot_token.txt", FileAccess.READ)
+	var content: String = fa.get_as_text()
+	var content_len: int = content.length() - 1
+	content = content.substr(0, content_len)
+	fa.close()
+	return content
 
 
 # Signals

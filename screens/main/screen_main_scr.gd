@@ -16,12 +16,11 @@ func _ready() -> void:
 		instance = self
 	
 	db = DB.new()
-	
 	manager = Manager.new()
 	
 	active_scene_parent = $ActiveSceneParent
 	
-	var new_scene_prefab: PackedScene = load(ResourcePath.screen.monetary.scene)
+	var new_scene_prefab: PackedScene = load(ResourcePath.screen.sandbox.scene)
 	var new_scene: Node = new_scene_prefab.instantiate()
 	active_scene_parent.add_child(new_scene)
 	active_scene = new_scene
