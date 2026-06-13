@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bw4ilxsn2pcyy"]
+
+[ext_resource type="FontFile" uid="uid://cg1efen5elju1" path="res://common/fonts/font_robotomono_medium.ttf" id="1_wr3y3"]
+
+[resource]
+font = ExtResource("1_wr3y3")
+font_size = 36
+font_color = Color(0, 0, 0, 1)

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b6yonrp04aisp"]
+
+[ext_resource type="FontFile" uid="uid://csuru78dsjuqu" path="res://common/fonts/font_inter_18pt_regular.ttf" id="1_xbkgi"]
+
+[resource]
+font = ExtResource("1_xbkgi")
+font_size = 32
+font_color = Color(0, 0, 0, 1)

@@ -1,8 +1,0 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cfvwjx0wibruw"]
-
-[ext_resource type="FontFile" uid="uid://r6nqdu8lrryk" path="res://fonts/font_ubuntu_mono_bold.ttf" id="1_t37l2"]
-
-[resource]
-font = ExtResource("1_t37l2")
-font_size = 36
-font_color = Color(0, 0, 0, 1)

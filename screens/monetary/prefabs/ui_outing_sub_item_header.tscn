@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c0xuxb7pnygfc"]
+
+[ext_resource type="LabelSettings" uid="uid://bbp1ij2t22m0o" path="res://common/label_settings/labelsetting_expenditure_subitem_header.tres" id="1_skk1t"]
+
+[node name="OutingSubItemHeader" type="Control" unique_id=1144412381]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="." unique_id=214615075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1488962478]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer" unique_id=896059417]
+layout_mode = 2
+text = "TRANSFER SUMMARY"
+label_settings = ExtResource("1_skk1t")
+vertical_alignment = 1

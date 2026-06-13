@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dij23ui7tlrpw"]
+
+[ext_resource type="Script" uid="uid://b8rati4efq7j" path="res://common/prefabs/ui/user_selection_item/ui_selection_item_scr.gd" id="1_ysfxc"]
+[ext_resource type="Texture2D" uid="uid://dkjocckwg8n37" path="res://common/textures/icons/tex_icon_checkmark.png" id="2_mnmpd"]
+[ext_resource type="FontFile" uid="uid://csuru78dsjuqu" path="res://common/fonts/font_inter_18pt_regular.ttf" id="3_3e8js"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk1yi"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.95, 0.95, 0.95, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="UserSelectionItem" type="Control" unique_id=1353113389]
+custom_minimum_size = Vector2(120, 41)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ysfxc")
+
+[node name="BG" type="Panel" parent="." unique_id=832132736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fk1yi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=33685089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1891547541]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Check" type="TextureRect" parent="HBoxContainer/MarginContainer" unique_id=1526862222]
+self_modulate = Color(0.29954746, 0.29954746, 0.29954743, 1)
+layout_mode = 2
+texture = ExtResource("2_mnmpd")
+expand_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=2039668234]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="Name" type="Label" parent="HBoxContainer/MarginContainer2" unique_id=618625342]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_3e8js")
+theme_override_font_sizes/font_size = 32
+text = "alex"

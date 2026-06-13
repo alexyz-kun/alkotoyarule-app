@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://l8kj2dw0kchh"]
+
+[ext_resource type="FontFile" uid="uid://csuru78dsjuqu" path="res://common/fonts/font_inter_18pt_regular.ttf" id="1_cf2qd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym81b"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.95, 0.95, 0.95, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="SceneWorkManager" type="Node3D" unique_id=1537647670]
+
+[node name="Control" type="Control" parent="." unique_id=2058737057]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Control" unique_id=318450283]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85, 0.85, 0.85, 1)
+
+[node name="ScreenPadding" type="MarginContainer" parent="Control" unique_id=1430968913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding" unique_id=1236255433]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ScreenPadding/VBoxContainer" unique_id=1693899305]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_cf2qd")
+theme_override_font_sizes/font_size = 64
+text = "Clients"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScreenPadding/VBoxContainer" unique_id=1346235319]
+layout_mode = 2
+
+[node name="ClientComponent" type="Control" parent="Control/ScreenPadding/VBoxContainer/VBoxContainer" unique_id=726170755]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/ScreenPadding/VBoxContainer/VBoxContainer/ClientComponent" unique_id=54733233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ym81b")
+
+[node name="Label" type="Label" parent="Control/ScreenPadding/VBoxContainer/VBoxContainer/ClientComponent" unique_id=839293085]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_cf2qd")
+text = "Client Name"

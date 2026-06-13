@@ -13,7 +13,7 @@ config_version=5
 config/name="Alkotoyarule App"
 run/main_scene="uid://tt007b5v0xui"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://textures/tex_icon.svg"
+config/icon="res://common/textures/icons/tex_icon_godot.svg"
 
 [display]
 

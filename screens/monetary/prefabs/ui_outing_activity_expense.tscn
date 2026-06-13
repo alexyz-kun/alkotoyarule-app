@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://drvs6vagw6v45"]
+
+[ext_resource type="Script" uid="uid://bcks5vblwg5nx" path="res://screens/monetary/prefabs/ui_outing_activity_expense_item_scr.gd" id="1_1cig2"]
+[ext_resource type="LabelSettings" uid="uid://b6yonrp04aisp" path="res://common/label_settings/labelsetting_expenditure_common.tres" id="2_iw3ho"]
+[ext_resource type="Texture2D" uid="uid://ckvaoru28iath" path="res://common/textures/icons/tex_icon_pencil.png" id="3_8f441"]
+[ext_resource type="PackedScene" uid="uid://b42yb4i7iaiy" path="res://screens/monetary/prefabs/ui_outing_activity_expense_item.tscn" id="4_qmsqc"]
+[ext_resource type="FontFile" uid="uid://r6nqdu8lrryk" path="res://common/fonts/font_ubuntu_mono_bold.ttf" id="5_dprhy"]
+
+[node name="ActivityExpense" type="VBoxContainer" unique_id=561940568]
+theme_override_constants/separation = 4
+script = ExtResource("1_1cig2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=942496006]
+layout_mode = 2
+
+[node name="ForLabel" type="Label" parent="HBoxContainer" unique_id=1354134945]
+layout_mode = 2
+text = "For"
+label_settings = ExtResource("2_iw3ho")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=174958199]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer" unique_id=1029047667]
+custom_minimum_size = Vector2(39, 0)
+layout_mode = 2
+icon = ExtResource("3_8f441")
+icon_alignment = 1
+
+[node name="RecipientLabel" type="Label" parent="HBoxContainer" unique_id=1921897410]
+layout_mode = 2
+text = "nobody"
+label_settings = ExtResource("2_iw3ho")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1666535175]
+layout_mode = 2
+theme_override_constants/margin_left = 57
+
+[node name="ActivityExpenseItemListAndFooter" type="VBoxContainer" parent="MarginContainer" unique_id=1953045833]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ActivityExpenseItemList" type="VBoxContainer" parent="MarginContainer/ActivityExpenseItemListAndFooter" unique_id=902410676]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ActivityExpenseItem" parent="MarginContainer/ActivityExpenseItemListAndFooter/ActivityExpenseItemList" unique_id=797361467 instance=ExtResource("4_qmsqc")]
+layout_mode = 2
+
+[node name="NewActivityExpenseItemButton" type="Button" parent="MarginContainer/ActivityExpenseItemListAndFooter" unique_id=797286661]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_dprhy")
+theme_override_font_sizes/font_size = 32
+text = "+item"

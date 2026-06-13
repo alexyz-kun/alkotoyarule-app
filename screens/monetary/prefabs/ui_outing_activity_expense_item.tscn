@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b42yb4i7iaiy"]
+
+[ext_resource type="LabelSettings" uid="uid://bw4ilxsn2pcyy" path="res://common/label_settings/labelsetting_expenditure_price.tres" id="1_r5pl6"]
+[ext_resource type="LabelSettings" uid="uid://b6yonrp04aisp" path="res://common/label_settings/labelsetting_expenditure_common.tres" id="2_0v677"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1el1g"]
+font_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[node name="ActivityExpenseItem" type="HBoxContainer" unique_id=320977486]
+offset_right = 676.0
+offset_bottom = 48.0
+
+[node name="Price" type="Label" parent="." unique_id=2075517100]
+layout_mode = 2
+text = "20,000"
+label_settings = ExtResource("1_r5pl6")
+
+[node name="PricePerPersonGroup" type="HBoxContainer" parent="." unique_id=1532677489]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PricePerPerson" type="Label" parent="PricePerPersonGroup" unique_id=1137366398]
+layout_mode = 2
+text = "  5,000"
+label_settings = ExtResource("1_r5pl6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PricePerPersonGroup" unique_id=338096428]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="PricePerPersonSuffix" type="Label" parent="PricePerPersonGroup/MarginContainer" unique_id=1738462936]
+layout_mode = 2
+text = "per person"
+label_settings = SubResource("LabelSettings_1el1g")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2034332417]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="ItemName" type="Label" parent="MarginContainer" unique_id=172423768]
+layout_mode = 2
+text = "Soda gembira"
+label_settings = ExtResource("2_0v677")
