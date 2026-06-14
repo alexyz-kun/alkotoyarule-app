@@ -3,7 +3,6 @@ extends Node3D
 
 static var instance: ScreenMain
 
-var db: DB
 var manager: Manager
 # Internal nodes
 var active_scene: Node3D
@@ -15,7 +14,6 @@ func _ready() -> void:
 	if !instance:
 		instance = self
 	
-	db = DB.new()
 	manager = Manager.new()
 	
 	active_scene_parent = $ActiveSceneParent

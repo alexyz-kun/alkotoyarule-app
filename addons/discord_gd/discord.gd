@@ -132,11 +132,11 @@ func login() -> void:
 #
 #
 #
-#region messages
+#region Messages
 
-func send(messageorchannelid, content, options: Dictionary = {}) -> Message:
+func send(message_or_channel_id, content, options: Dictionary = {}) -> Message:
 	# channel
-	var res = await _send_message_request(messageorchannelid, content, options)
+	var res = await _send_message_request(message_or_channel_id, content, options)
 	return res
 
 
@@ -160,7 +160,7 @@ func delete(message: Message):
 #
 #
 #
-#region threads
+#region Threads
 
 func start_thread(message: Message, thread_name: String, duration: int = 60 * 24) -> Dictionary:
 	var payload = {'name': thread_name, 'auto_archive_duration': duration}
@@ -175,7 +175,8 @@ func start_thread(message: Message, thread_name: String, duration: int = 60 * 24
 #
 #
 #
-#region channels
+#region Channels
+
 
 # See https://discord.com/developers/docs/resources/guild#create-guild-channel
 # All parameters are optional and nullable excluding data.name
@@ -185,9 +186,10 @@ func create_channel(guild_id: String, data: Dictionary) -> Dictionary:
 
 
 # See https://discord.com/developers/docs/resources/channel#get-channel
-func get_channel(channel_id: String) -> Dictionary:
-	var res = await _send_get('/channels/%s' % channel_id)
-	return res
+func get_channel(channel_id: String) -> DiscordChannel:
+	var dict_data: Dictionary = await _send_get('/channels/%s' % channel_id)
+	var object_data := DiscordChannel.from_dict(dict_data)
+	return object_data
 
 
 # See https://discord.com/developers/docs/resources/channel#modify-channel
@@ -230,12 +232,13 @@ func permissions_in(channel_id: String):
 	# Permissions for the bot in a channel
 	return permissions_for(user.id, channel_id)
 
+
 #endregion
 #
 #
 #
 #
-#region user
+#region Users
 
 ## Returns a [User] object or error Dictionary
 func get_user(user_id: String):
@@ -263,7 +266,7 @@ func update_current_user(user_data: Dictionary):
 #
 #
 #
-#region guilds
+#region Guilds
 
 func get_guild_icon(guild_id: String, size: int = 256) -> PackedByteArray:
 	assert(Helpers.is_valid_str(guild_id), 'Invalid Type: guild_id must be a valid String')
@@ -350,12 +353,19 @@ func search_guild_messages(guild_id: String, p_opts: Dictionary, p_user_token: S
 	var headers = ["Authorization: %s" % p_user_token]
 	return await _send_get('/guilds/%s/messages/search?%s' % [guild_id, client.query_string_from_dict(opts)], HTTPClient.METHOD_GET, headers)
 
+# Custom
+
+func get_guild(p_guild_id: String) -> DiscordGuild:
+	var guild_data_dict: Dictionary = await _send_get('/guilds/%s' % p_guild_id)
+	var guild_object: DiscordGuild = DiscordGuild.from_dict(guild_data_dict)
+	return guild_object
+
 #endregion
 #
 #
 #
 #
-#region guild member
+#region Guild Members
 
 func remove_member_role(guild_id: String, user_id: String, role_id: String):
 	var res = await _send_get('/guilds/%s/members/%s/roles/%s' % [guild_id, user_id, role_id], HTTPClient.METHOD_DELETE)
@@ -436,7 +446,7 @@ func permissions_for(user_id: String, channel_id: String):
 #
 #
 #
-#region roles
+#region Roles
 
 func create_role(guild_id: String, p_opts: Dictionary):
 	var opts = {
@@ -475,7 +485,7 @@ func delete_role(guild_id: String, role_id: String):
 #
 #
 #
-#region reactions
+#region Reactions
 
 # ONLY custom emojis will work, pass in only the Id of the emoji to the custom_emoji
 func create_reaction(messageordict, custom_emoji: String) -> int:
@@ -533,7 +543,7 @@ func get_reactions(messageordict, custom_emoji: String):
 #
 #
 #
-#region commands
+#region Commands
 
 func register_command(command: ApplicationCommand, guild_id: String = '') -> ApplicationCommand:
 	var slug = '/applications/%s' % application.id
@@ -619,7 +629,11 @@ func get_commands(guild_id: String = '') -> Array:
 	return cmds
 
 #endregion
-
+#
+#
+#
+#
+#region Uncategorized
 
 ## [code]
 ## p_options:
@@ -671,6 +685,11 @@ func trigger_typing_indicator(p_channel_id: String):
 	var res = await _send_request('/channels/%s/typing' % [p_channel_id], {}, HTTPClient.METHOD_POST)
 	return res
 
+#endregion
+#
+#
+#
+#
 #endregion
 #
 #
@@ -1335,3 +1354,7 @@ func _log_error(message_func: Callable) -> void:
 	print_rich(start + ("\n" + start).join(message.split("\n")))
 
 #endregion
+#
+#
+#
+#

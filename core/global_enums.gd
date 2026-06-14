@@ -1,4 +1,4 @@
-class_name DB
+class_name GlobalEnum
 
 enum Pronoun {
 	HE,
@@ -12,43 +12,11 @@ enum Platform {
 	TWITTER,
 }
 
-static var user_list: Array[AlkotoUser]
-static var client_list: Array[Client]
-static var outing_list: Array[Outing]
+#region Generic
 
-# Base methods
-
-func _init():
-	user_list = [
-		AlkotoUser.new("Alex", "5271 6252 95",	"BCA"),
-		AlkotoUser.new("Dale", "", "BCA"),
-		AlkotoUser.new("Kopi", "9016 0052 443",	"Jenius / BTPN / SMBC"),
-		AlkotoUser.new("Toby", "7645 0177 90", 	"BCA"),
-		AlkotoUser.new("Toru", "6043 3466 23", 	"BCA"),
-		AlkotoUser.new("Yaki", "7965 3058 82", 	"BCA")
-	]
-
-
-# Subclasses
 
 class Tag:
 	var title: String
-
-
-class AlkotoUser:
-	var user_name: String
-	var pronoun_list: Array[Pronoun]
-	var bank_account: String
-	var bank_account_number: String
-	
-	func _init(
-		p_user_name: String,
-		p_bank_account_number: String,
-		p_bank_account: String) -> void:
-		
-		user_name = p_user_name
-		bank_account = p_bank_account
-		bank_account_number = p_bank_account_number
 
 
 class Client:
@@ -73,7 +41,10 @@ class Work:
 	var trello_ticket_url: String
 
 
-# Outing data
+#endregion
+
+#region Outing
+
 
 class Outing:
 	var date: String
@@ -103,3 +74,6 @@ class PendingTransfer:
 	var user_to_send: User
 	var user_to_receive: User
 	var amount_owed: int
+
+
+#endregion
