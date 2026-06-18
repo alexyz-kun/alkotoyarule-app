@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmg6t7e2xo4i1"]
 
-[ext_resource type="Script" uid="uid://fl6ss078ay4o" path="res://screens/sandbox/screen_sandbox_scr.gd" id="1_rmq3t"]
+[ext_resource type="Script" uid="uid://fl6ss078ay4o" path="res://screens/sandbox/screen_sandbox.gd" id="1_rmq3t"]
 [ext_resource type="Script" uid="uid://dqss6smw7w8nh" path="res://addons/discord_gd/discord.gd" id="2_h0rcq"]
 [ext_resource type="FontFile" uid="uid://cg1efen5elju1" path="res://common/fonts/font_robotomono_medium.ttf" id="3_h0rcq"]
 
@@ -43,3 +43,10 @@ theme_override_font_sizes/font_size = 64
 text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="Control" unique_id=610661234]
+
+[node name="Control" type="Control" parent="Control" unique_id=221069223]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

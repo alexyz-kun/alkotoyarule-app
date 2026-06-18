@@ -40,8 +40,8 @@ var default_sort_order: int
 var default_forum_layout: int
 #endregion
 
-static func from_dict(p_data: Dictionary) -> DiscordChannel:
+static func from_dict(data: Dictionary) -> DiscordChannel:
 	var channel := DiscordChannel.new()
-	channel.id = p_data.id
-	channel.name = p_data.name
+	channel.id = data.id
+	channel.name = data.name
 	return channel

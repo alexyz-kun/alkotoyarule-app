@@ -50,8 +50,8 @@ var incidents_data
 #endregion
 
 
-static func from_dict(p_data: Dictionary) -> DiscordGuild:
+static func from_dict(data: Dictionary) -> DiscordGuild:
 	var guild := DiscordGuild.new()
-	guild.id = p_data.id
-	guild.name = p_data.name
+	guild.id = data.id
+	guild.name = data.name
 	return guild

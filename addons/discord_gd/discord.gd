@@ -164,10 +164,12 @@ func delete(message: Message):
 
 func start_thread(message: Message, thread_name: String, duration: int = 60 * 24) -> Dictionary:
 	var payload = {'name': thread_name, 'auto_archive_duration': duration}
-	var res = await _send_request(
-		'/channels/%s/messages/%s/threads' % [message.channel_id, message.id], payload
-	)
+	var res = await _send_request('/channels/%s/messages/%s/threads' % [message.channel_id, message.id], payload)
+	return res
 
+
+func get_public_threads(channel_id: String) -> Dictionary:
+	var res = await _send_get('/channels/%s/threads/archived/public' % [channel_id])
 	return res
 
 #endregion
@@ -1064,7 +1066,10 @@ func _send_get_cdn(slug) -> PackedByteArray:
 
 
 func _send_message_request(
-	messageorchannelid, content, options := {}, method := HTTPClient.METHOD_POST
+	message_or_channelid,
+	content,
+	options := {},
+	method := HTTPClient.METHOD_POST
 ):
 	var payload = {
 		'content': null,
@@ -1076,23 +1081,23 @@ func _send_message_request(
 	}
 
 	var slug
-	if messageorchannelid is Message:
-		slug = '/channels/%s/messages' % str(messageorchannelid.channel_id)
+	if message_or_channelid is Message:
+		slug = '/channels/%s/messages' % str(message_or_channelid.channel_id)
 	else:
-		assert(messageorchannelid.length() > 16, 'channel_id is not valid')
-		slug = '/channels/%s/messages' % str(messageorchannelid)
+		assert(message_or_channelid.length() > 16, 'channel_id is not valid')
+		slug = '/channels/%s/messages' % str(message_or_channelid)
 
 	# Handle edit message or delete message
 	if method == HTTPClient.METHOD_PATCH or method == HTTPClient.METHOD_DELETE:
-		slug += '/' + str(messageorchannelid.id)
+		slug += '/' + str(message_or_channelid.id)
 
 	if method == HTTPClient.METHOD_PATCH:
-		if typeof(messageorchannelid) == TYPE_OBJECT and typeof(messageorchannelid.attachments) == TYPE_ARRAY:
-			if messageorchannelid.attachments.size() == 0:
+		if typeof(message_or_channelid) == TYPE_OBJECT and typeof(message_or_channelid.attachments) == TYPE_ARRAY:
+			if message_or_channelid.attachments.size() == 0:
 				payload.attachments = null
 			else:
 				# Add the attachments to keep to the payload
-				payload.attachments = messageorchannelid.attachments
+				payload.attachments = message_or_channelid.attachments
 
 	# Check if the content is only a string
 	if typeof(content) == TYPE_STRING and content.length() > 0:
@@ -1167,38 +1172,38 @@ func _send_message_request(
 			}
 			"""
 			payload.message_reference = options.message_reference
-
+		
 		if options.has("files") and options.files:
 			if typeof(options.files) != TYPE_ARRAY:
 				_log(func(): return "Invalid Type: files in message options must be an array")
 				return null
-
+			
 			if options.files.size() > 0:
 				# Loop through each file
 				for file in options.files:
 					if not file.has('name') or not Helpers.is_valid_str(file.name):
 						_log(func(): return "Missing name for file in files")
 						return null
-
+					
 					if not file.has('media_type') or not Helpers.is_valid_str(file.media_type):
 						_log(func(): return "Missing media_type for file in files")
 						return null
-
+					
 					if not file.has('data') or not file.data:
 						_log(func(): return "Missing data for file in files")
 						return null
-
+					
 					if not (file.data is PackedByteArray):
 						_log(func(): return "Invalid Type: data of file in files must be PackedByteArray")
 						return null
-
+					
 			var json_payload = payload.duplicate(true)
 			var new_payload = {
 				files = options.files,
 				payload_json = json_payload
 			}
 			payload = new_payload
-
+	
 	var res
 	if payload.has("files") and payload.files and typeof(payload.files) == TYPE_ARRAY:
 		# Send raw post request using multipart/form-data

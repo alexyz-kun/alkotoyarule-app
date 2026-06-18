@@ -3,6 +3,7 @@ extends Node3D
 
 static var instance: ScreenMain
 
+var app_data := AppData.new()
 var manager: Manager
 # Internal nodes
 var active_scene: Node3D

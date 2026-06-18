@@ -10,7 +10,7 @@ var new_activity_expense_item_button: Button
 var prefab_user_selection_modal: PackedScene
 var prefab_activity_expense_item: PackedScene
 # Data
-var recipient_list: Array[DB.AlkotoUser]
+var recipient_list: Array[AlkotoUser]
 var user_selection_modal: UserSelectionModal
 
 # Base methods
@@ -52,12 +52,12 @@ func _on_user_selection_modal_closed():
 	user_selection_modal = null
 
 
-func _on_recipient_list_changed(p_new_recipient_list: Array[DB.AlkotoUser]):
+func _on_recipient_list_changed(p_new_recipient_list: Array[AlkotoUser]):
 	recipient_list = p_new_recipient_list
 	var recipient_names: String = ""
 	var recipient_count: int = recipient_list.size()
 	for i in recipient_count:
-		var recipient: DB.AlkotoUser = recipient_list[i]
+		var recipient: AlkotoUser = recipient_list[i]
 		recipient_names += recipient.user_name.to_lower()
 		if i < recipient_count - 2:
 			recipient_names += ", "

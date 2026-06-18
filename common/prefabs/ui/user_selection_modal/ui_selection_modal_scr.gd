@@ -14,7 +14,7 @@ var user_selection_item_wrapper_list: Array[UserSelectionItemWrapper]
 
 # Base methods
 
-func set_up(p_initial_selected_user_list: Array[DB.AlkotoUser]):
+func set_up(p_initial_selected_user_list: Array[AlkotoUser]):
 	# Internal nodes
 	user_selection_item_nlist = \
 		$MarginContainer/UserListAndHeader/MarginContainer/ScrollContainer/UserSelectionList
@@ -27,8 +27,8 @@ func set_up(p_initial_selected_user_list: Array[DB.AlkotoUser]):
 	confirm_button.pressed.connect(_on_confirm_button_pressed)
 	
 	# Misc	
-	for i in DB.user_list.size():
-		var user: DB.AlkotoUser = DB.user_list[i]
+	for i in ScreenMain.instance.app_data.user_list.size():
+		var user: AlkotoUser = ScreenMain.instance.app_data.user_list[i]
 		var user_is_selected: bool = false
 		
 		for selected_user in p_initial_selected_user_list:
@@ -55,7 +55,7 @@ func toggle_item_selection(p_index: int):
 	var new_selected_state: bool = !user_selection_item_wrapper_list[p_index].is_selected
 	user_selection_item_wrapper_list[p_index].is_selected = new_selected_state
 	
-	var selected_user_list: Array[DB.AlkotoUser] = []
+	var selected_user_list: Array[AlkotoUser] = []
 	for item in user_selection_item_wrapper_list:
 		if !item.is_selected:
 			continue
@@ -73,13 +73,13 @@ func _on_confirm_button_pressed():
 # Subclasses
 
 class UserSelectionItemWrapper:
-	var user: DB.AlkotoUser
+	var user: AlkotoUser
 	var is_selected: bool
 	var user_selection_item: UserSelectionItem
 	
 	func _init(
 		p_user_selection_item: UserSelectionItem,
-		p_user: DB.AlkotoUser,
+		p_user: AlkotoUser,
 		p_is_selected: bool) -> void:
 		
 		user_selection_item = p_user_selection_item
